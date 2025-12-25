@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="main-container">
+        <section class="hero">
+            <span class="badge">Team CODE CLASH</span>
+            <h1>Carbon Footprint Tracker</h1>
+            <p>"Tracking Today for a Greener Tomorrow"</p>
+            <div class="hero-btns">
+                <button class="btn-primary">Calculate Your Footprint</button>
+                <button class="btn-outline">View Leaderboard</button>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <div class="card"><h3>Invisible Enemy</h3><p>4.5 tons avg/year</p></div>
+            <div class="card"><h3>Data Overload</h3><p>73% give up tracking</p></div>
+            <div class="card"><h3>Lack of Impact</h3><p>2.5x collective action</p></div>
+        </section>
+
+        <section class="dashboard">
+            <div class="calculator card">
+                <h2>Calculate Emissions</h2>
+                <div class="slider-box">
+                    <label>Daily Travel: <span id="distVal">20</span> km</label>
+                    <input type="range" id="dist" min="0" max="100" value="20">
+                </div>
+                <div class="slider-box">
+                    <label>Energy Usage: <span id="nrgVal">10</span> kWh</label>
+                    <input type="range" id="nrg" min="0" max="50" value="10">
+                </div>
+                <div class="emission-result">
+                    <h3>Total Daily Emission</h3>
+                    <h1 id="total">16.7 kg</h1>
+                </div>
+            </div>
+
+            <div class="score card">
+                <h2>Your Green Score</h2>
+                <canvas id="scoreChart"></canvas>
+                <div class="offset-plan">
+                    <p>🌳 Trees needed to offset: <strong>291</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="leaderboard card">
+            <h2>Global Leaderboard</h2>
+            <ul>
+                <li><span>🥇 Eco Warrior</span> <span>98 pts</span></li>
+                <li><span>🥈 Green Hero</span> <span>92 pts</span></li>
+                <li><span>🥉 Nature Lover</span> <span>88 pts</span></li>
+            </ul>
+        </section>
+
+        <section class="ai-bot card">
+            <h2>AI Eco-Tips</h2>
+            <div class="chat-input">
+                <input type="text" placeholder="Ask about eco-friendly tips...">
+                <button>Send</button>
+            </div>
+            <button class="btn-outline" id="showLeaderboard">View Leaderboard</button>
+             
+<div id="leaderboardModal" class="modal">
+    <div class="modal-content card">
+        <span class="close-btn">&times;</span>
+        <h2>Global Leaderboard</h2>
+        <table id="leaderboardTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+</div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
