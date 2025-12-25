@@ -1,4 +1,4 @@
-// Initialize Doughnut Chart
+
 const ctx = document.getElementById('scoreChart').getContext('2d');
 let scoreChart = new Chart(ctx, {
     type: 'doughnut',
@@ -16,7 +16,7 @@ let scoreChart = new Chart(ctx, {
     }
 });
 
-// Calculator Logic
+
 const distInput = document.getElementById('dist');
 const nrgInput = document.getElementById('nrg');
 const totalText = document.getElementById('total');
@@ -28,11 +28,11 @@ function updateUI() {
     document.getElementById('distVal').innerText = d;
     document.getElementById('nrgVal').innerText = e;
 
-    // Logic: Transport (0.2kg/km) + Energy (0.4kg/kWh)
+   
     let total = (d * 0.2) + (e * 0.4);
     totalText.innerText = total.toFixed(1) + " kg";
 
-    // Update Chart dynamically
+    
     scoreChart.data.datasets[0].data = [d * 2, e * 4, 30];
     scoreChart.update();
 }
@@ -40,8 +40,8 @@ function updateUI() {
 distInput.addEventListener('input', updateUI);
 nrgInput.addEventListener('input', updateUI);
 
-// Initial UI update
-const API_KEY = "AIzaSyCuv4DmxpG0IIkya2o8GYNIRHEwGX9bG9o"; // Apni key yahan dalein
+
+const API_KEY = "AIzaSyCuv4DmxpG0IIkya2o8GYNIRHEwGX9bG9o"; 
 const chatInput = document.querySelector('.ai-bot input');
 const chatBtn = document.querySelector('.ai-bot button');
 
@@ -64,7 +64,7 @@ async function askAI() {
         const data = await response.json();
         const aiResponse = data.candidates[0].content.parts[0].text;
         
-        // Alert ya chat box mein dikhane ke liye
+       
         alert("AI Tip: " + aiResponse); 
         
     } catch (error) {
@@ -109,7 +109,7 @@ async function askAI() {
         const data = await response.json();
         const aiResponse = data.candidates[0].content.parts[0].text;
         
-        // Response ko screen par dikhane ke liye alert ki jagah div use karein
+       
         console.log("AI Response:", aiResponse);
         alert(aiResponse);
 
@@ -124,7 +124,7 @@ async function askAI() {
 }
 
 
-// Leaderboard ka Dummy Data
+
 const leaderboardData = [
     { rank: "🥇", name: "Eco Warrior", score: 980 },
     { rank: "🥈", name: "Green Knight", score: 945 },
@@ -136,10 +136,9 @@ const modal = document.getElementById("leaderboardModal");
 const btn = document.getElementById("showLeaderboard");
 const closeBtn = document.querySelector(".close-btn");
 
-// Button click par modal dikhana aur data load karna
 btn.onclick = function() {
     const tbody = document.querySelector("#leaderboardTable tbody");
-    tbody.innerHTML = ""; // Purana data clear karein
+    tbody.innerHTML = ""; 
 
     leaderboardData.forEach(user => {
         let row = `<tr>
@@ -153,7 +152,7 @@ btn.onclick = function() {
     modal.style.display = "block";
 }
 
-// Close button logic
+
 closeBtn.onclick = () => modal.style.display = "none";
 window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 
@@ -161,33 +160,32 @@ document.querySelector(".btn-primary").addEventListener("click", () => {
     document.querySelector(".dashboard").scrollIntoView({ behavior: 'smooth' });
 });
 
-// 1. Modal aur Button ko select karein
 const lbModal = document.getElementById("leaderboardModal");
-const lbBtn = document.getElementById("showLeaderboard"); // HTML mein id="showLeaderboard" hona chahiye
+const lbBtn = document.getElementById("showLeaderboard"); 
 const closeSpan = document.querySelector(".close-btn");
 
 // 2. Button Click Event
 if (lbBtn) {
     lbBtn.addEventListener('click', function() {
-        console.log("Leaderboard button clicked!"); // Console mein check karne ke liye
+        console.log("Leaderboard button clicked!"); 
         lbModal.style.display = "block";
-        loadLeaderboardData(); // Data load karne ka function
+        loadLeaderboardData(); 
     });
 }
 
-// 3. Close karne ka logic
+
 if (closeSpan) {
     closeSpan.onclick = () => lbModal.style.display = "none";
 }
 
-// Modal ke bahar click karne par band hona
+
 window.onclick = (event) => {
     if (event.target == lbModal) {
         lbModal.style.display = "none";
     }
 }
 
-// 4. Dummy Data Function
+
 function loadLeaderboardData() {
     const tbody = document.querySelector("#leaderboardTable tbody");
     if (!tbody) return;
